@@ -2,8 +2,12 @@
 import { ScrollView, Text, View } from "react-native"
 import { Header } from "../components/Home.Header"
 import { HomeCard } from "../components/Home.Card"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
 
 export const Home = ( ) => {
+    const UserContxt = useContext( UserContext );
+
     return (
         <View style={{
             width: "100%",
@@ -31,15 +35,9 @@ export const Home = ( ) => {
                     // backgroundColor: "red"
                 }}>
                     <Text style={{
+                        color: "#000000",
                         fontSize: 20,
-                        fontWeight: "500",
-                        color: "gray"
-                    }}>Boa tarde, </Text>
-                    <Text style={{
-                        fontSize: 28,
-                        fontWeight: "500",
-                        color: "#000000"
-                    }}>Tamires</Text>
+                    }}>Olá, { UserContxt?.user?.name }</Text>
                 </View>
 
                 <View style={{

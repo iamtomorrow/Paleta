@@ -11,7 +11,7 @@ export const Header = ( ) => {
         navigation.navigate({ name: route } as never );
     }
 
-    const openMenu = ( ) => {
+    const toggleMenu = ( ) => {
 
     }
 
@@ -22,8 +22,8 @@ export const Header = ( ) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            // backgroundColor: "red"
-            backgroundColor: "rgba(0, 0, 0, 0)"
+            // backgroundColor: "red",
+            // backgroundColor: "rgba(0, 0, 0, 0)"
         }}>
             <View style={{
                 width: "100%",

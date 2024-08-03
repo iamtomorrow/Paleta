@@ -1,7 +1,7 @@
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useContext } from "react";
 import { Home } from "../screens/Home";
 import { NavigationContainer } from "@react-navigation/native";
 import { Search } from "../screens/Search";
@@ -12,6 +12,9 @@ import Icon from "react-native-remix-icon"
 import { Library } from "../screens/Library";
 import { Color } from "../screens/Color";
 import { Table } from "../screens/Table";
+import { Preload } from "../screens/Preload";
+import { Login } from "../screens/Login";
+import { NavigationContext } from "../../contexts/NavigationContext";
 
 const Stack = createNativeStackNavigator( );
 const Tabs = createBottomTabNavigator( );
@@ -23,6 +26,8 @@ export const HomeStack = ( ) => {
             screenOptions={{
                 headerShown: false,
             }}>
+            <Stack.Screen name="Preload" component={ Preload }/>
+            <Stack.Screen name="Login" component={ Login }/>
             <Stack.Screen name="Home" component={ Home }/>
             <Stack.Screen name="Search" component={ Search }/>
             <Stack.Screen name="Favorites" component={ Favorites } />
@@ -32,6 +37,7 @@ export const HomeStack = ( ) => {
 }
 
 export const AppNavigator = ( ) => {
+    const NavigationContxt = useContext( NavigationContext );
 
     return (
         <NavigationContainer>
@@ -40,13 +46,19 @@ export const AppNavigator = ( ) => {
                     headerShown: false,
                     tabBarHideOnKeyboard: true,
                     tabBarStyle: {
-                        height: 60,
-                        display: "flex",
+                        height: NavigationContxt.currentRoute === "Login" ||
+                                NavigationContxt.currentRoute === "Preload" 
+                                ? 0
+                                : 60,
+                        display: NavigationContxt.currentRoute === "Login" ||
+                                NavigationContxt.currentRoute === "Preload" 
+                                ? "none"
+                                : "flex",
                         flexDirection: "row",
                         // alignItems: "center",
                         justifyContent: "space-between",
                         marginTop: 0,
-                        borderColor: "rgba(0, 0, 0, 0)"
+                        borderColor: "rgba(0, 0, 0, 0)",
                     },
                     tabBarIcon: ( ) => {
                         let iconName: any;
@@ -65,7 +77,7 @@ export const AppNavigator = ( ) => {
                 })}
             >
                 <Tabs.Screen 
-                    name="Home" component={ Home } 
+                    name="Home" component={ HomeStack } 
                     options={{
                         tabBarLabelStyle: {
                             fontSize: 10,
@@ -74,6 +86,22 @@ export const AppNavigator = ( ) => {
                             marginBottom: 10,
                         }
                     }}/>
+                <Tabs.Screen 
+                    name="Preload" component={ Preload }
+                    options={{
+                        tabBarItemStyle: {
+                            display: "none"
+                        }
+                    }}
+                />
+                <Tabs.Screen 
+                    name="Login" component={ Login }
+                    options={{
+                        tabBarItemStyle: {
+                            display: "none"
+                        }
+                    }}
+                />
                 <Tabs.Screen 
                     name="Search" component={ Search } 
                     options={{
@@ -110,12 +138,6 @@ export const AppNavigator = ( ) => {
                         tabBarItemStyle: {
                             display: "none"
                         },
-                        tabBarLabelStyle: {
-                            fontSize: 10,
-                            color: "#000000",
-                            fontWeight: "600",
-                            marginBottom: 10,
-                        }
                     }}/>
                 <Tabs.Screen 
                     name="Color" component={ Color } 
@@ -123,12 +145,6 @@ export const AppNavigator = ( ) => {
                         tabBarItemStyle: {
                             display: "none"
                         },
-                        tabBarLabelStyle: {
-                            fontSize: 10,
-                            color: "#000000",
-                            fontWeight: "600",
-                            marginBottom: 10,
-                        }
                     }}/>
                 <Tabs.Screen 
                     name="Table" component={ Table } 
@@ -136,12 +152,6 @@ export const AppNavigator = ( ) => {
                         tabBarItemStyle: {
                             display: "none"
                         },
-                        tabBarLabelStyle: {
-                            fontSize: 10,
-                            color: "#000000",
-                            fontWeight: "600",
-                            marginBottom: 10,
-                        }
                     }}/>
             </Tabs.Navigator>
         </NavigationContainer>
