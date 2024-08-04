@@ -5,11 +5,16 @@ import { ColorContext } from "../../contexts/ColorContext"
 import { MaterialIcons } from "@expo/vector-icons"
 import { LibraryHeader } from "../components/Library.Header"
 import Icon from "react-native-remix-icon"
+import { TextInput } from "react-native-gesture-handler"
+import { FavoritesContext } from "../../contexts/FavoritesContext"
+import { ColorProps } from "../../Types/types"
 
 export const Color = ( ) => {
     const [ expandBar, setExpandBar ] = useState<boolean>(false);
     const [ toggleIcon, setToggleIcon ] = useState<boolean>(false);
+
     const ColorContxt = useContext( ColorContext );
+    const FavoritesContxt = useContext( FavoritesContext );
 
     return (
         <View style={{
@@ -27,13 +32,13 @@ export const Color = ( ) => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    backgroundColor: ColorContxt.color?.colorCode,
                 }}>
                     <View style={{
                         width: "100%",
                         height: "auto",
                         marginTop: StatusBar.currentHeight,
                         padding: 14,
+                        zIndex: 2,
                     }}>
                         <TouchableOpacity 
                         onPress={ ( ) => setExpandBar(false) }
@@ -53,6 +58,17 @@ export const Color = ( ) => {
                             />
                         </TouchableOpacity>
                     </View>
+
+                    <Image 
+                        source={{ uri: ColorContxt.color?.sample }}
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            width: "100%",
+                            height: "100%",
+                            // zIndex: 3,
+                        }}
+                    />
                 </View>
             }
 
@@ -154,26 +170,37 @@ export const Color = ( ) => {
                 }}>
                     <View style={{
                         width: "100%",
+                        height: 100,
+                        // backgroundColor: "yellow"
                     }}>
                         <View style={{
                             width: "100%",
                             height: "auto",
                             paddingBottom: 10,
                             display: "flex",
-                            flexDirection: "row"
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "flex-start"
                         }}>
                             <Text style={{
                                 fontWeight: "bold",
                                 color: "#000000",
-                                fontSize: 30
-                            }}>{ ColorContxt.color?.base } </Text>
+                                fontSize: 60,
+                                lineHeight: 60,
+                                // backgroundColor: "red"
+                            }}>{ ColorContxt.color?.base }</Text>
                             <Text style={{
                                 fontWeight: "light",
                                 color: "#000000",
-                                fontSize: 30,
+                                fontSize: 24,
+                                lineHeight: 24,
+                                width: "50%",
+                                marginLeft: 4,
+                                // backgroundColor: "blue",
                                 // marginLeft: 10,
                                 display: "flex",
-                                flexWrap: "wrap"
+                                flexWrap: "wrap",
+                                textTransform: "uppercase"
                             }}>{ ColorContxt.color?.name }</Text>
 
                         </View>
@@ -185,16 +212,11 @@ export const Color = ( ) => {
                         marginTop: 10,
                         marginBottom: 10,
                         display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center"
+                        flexDirection: "column",
+                        alignItems: "flex-start",
                         // backgroundColor: "yellow"
                     }}>
-                        {/* <Text style={{
-                            color: "#000000",
-                            fontSize: 12,
-                            marginBottom: 10,
-                            fontWeight: "500"
-                        }}>Fundo de clareamento ({ ColorContxt.color?.lighteningColor[0]?.name })</Text> */}
+                        
                         <TouchableOpacity 
                             onPress={ ( ) => setExpandBar(true) }
                             style={{
@@ -211,7 +233,14 @@ export const Color = ( ) => {
                         }}>
 
                         </View>
-                        
+
+                        <Text style={{
+                            color: "#000000",
+                            fontSize: 12,
+                            marginTop: 10,
+                            marginBottom: 10,
+                            fontWeight: "500"
+                        }}>Fundo de clareamento</Text> 
                         <TouchableOpacity style={{
                             width: "50%",
                             height: 30,
@@ -221,16 +250,6 @@ export const Color = ( ) => {
 
                         </TouchableOpacity>
                     </View>
-
-                    {/* <Text style={{
-                        fontWeight: "400",
-                        color: "#000000",
-                        fontSize: 11,
-                        // marginLeft: 10,
-                        display: "flex",
-                        flexWrap: "wrap",
-                        marginTop: 10,
-                    }}>{ ColorContxt.color?.description }</Text> */}
                 </View>
 
                 <View style={{
@@ -275,7 +294,9 @@ export const Color = ( ) => {
                     justifyContent: "space-around",
                     // backgroundColor: "blue"
                 }}>
-                    <TouchableOpacity style={{
+                    <TouchableOpacity 
+                    onPress={ ( ) => FavoritesContxt?.addToFavorites( ColorContxt.color as ColorProps ) }
+                    style={{
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",

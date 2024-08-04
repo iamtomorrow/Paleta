@@ -3,11 +3,30 @@ import { ScrollView, TextInput, View } from "react-native"
 import { Header } from "../components/Home.Header"
 import { Ionicons, MaterialIcons } from "@expo/vector-icons"
 
-import { library } from "../../data/data"
 import { LibraryCard } from "../components/Library.Card"
 import { LibraryHeader } from "../components/Library.Header"
+import { useContext, useEffect, useState } from "react"
+import { ColorProps } from "../../Types/types"
+import { LibraryContext } from "../../contexts/LibraryContext"
 
 export const Library = ( ) => {
+    const LibraryContxt = useContext( LibraryContext );
+    const [ query, setQuery ] = useState<string>("");
+    const [ filteredLibrary, setFilteredLibrary ] = useState<ColorProps[]>([]);
+
+    useEffect(( ) => {
+        console.log("svs");
+        LibraryContxt.getLibrary( );
+        setFilteredLibrary( LibraryContxt.library );
+    }, [ ]);
+
+    useEffect(( ) => {
+        let filter = LibraryContxt.library.filter((item) => {
+            return item.name.includes(query) || item.base.includes(query);
+        })
+        setFilteredLibrary( filter );
+    }, [ query ])
+
     return (
         <View style={{
             width: "100%",
@@ -46,14 +65,16 @@ export const Library = ( ) => {
                             size={25}
                         />
                         <TextInput
+                            placeholder="Pesquisar por cor"
+                            value={ query }
+                            onChangeText={ (text) => setQuery(text) } 
+                            placeholderTextColor={"rgba(0, 0, 0, 0.4)"}
                             style={{
+                                paddingLeft: 10,
+                                paddingRight: 10,
                                 flex: 1,
-                                height: "100%",
-                                // backgroundColor: "green",
-                                marginLeft: 10,
-                            }}
-                            placeholder="Procure por cores"
-                            placeholderTextColor={"gray"}>
+                                fontWeight: "500"
+                            }}>
                         </TextInput>
                     </View>
                 </View>
@@ -67,8 +88,8 @@ export const Library = ( ) => {
                     padding: 16,
                 }}>
                     {
-                        library &&
-                        library.map((item, index) => (
+                        LibraryContxt.library &&
+                        filteredLibrary.map((item, index) => (
                             <LibraryCard 
                                 id={ item.key }
                                 base={ item.base }
@@ -79,7 +100,6 @@ export const Library = ( ) => {
                         ))
                     }
                 </View>
-
             </ScrollView>
         </View>
     )

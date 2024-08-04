@@ -25,16 +25,35 @@ export const Table = ( ) => {
                     alignItems: "center",
                     justifyContent: "space-between"
                 }}>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: "500",
-                        color: "#000000"
-                    }}>Altura de tom</Text>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: "500",
-                        color: "#000000"
-                    }}>Fundo de clareamento</Text>
+                    <View style={{
+                        width: "50%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems:"center",
+                        justifyContent: "center",
+                        // backgroundColor: "red"
+                    }}>
+                        <Text style={{
+                            fontSize: 12,
+                            fontWeight: "500",
+                            color: "#000000",
+                        }}>Altura de tom</Text>
+                    </View>
+                    
+                    <View style={{
+                        width: "50%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems:"center",
+                        justifyContent: "center",
+                        // backgroundColor: "blue"
+                    }}>
+                        <Text style={{
+                            fontSize: 12,
+                            fontWeight: "500",
+                            color: "#000000",
+                        }}>Fundo de clareamento</Text>
+                    </View>
                 </View>
 
                 <View style={{
@@ -53,33 +72,61 @@ export const Table = ( ) => {
                                 marginBottom: 10,
                                 display: "flex",
                                 flexDirection: "row",
-                                alignItems: "center"
+                                alignItems: "center",
+                                justifyContent: "space-around"
                                 // backgroundColor: "red"
                             }}>
 
-                                <TouchableOpacity style={{
+                                <View style={{
                                     width: "50%",
-                                    height: 30,
-                                    backgroundColor: item.colorCode
+                                    height: 40,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    // backgroundColor: "blue"
                                 }}>
+                                    <TouchableOpacity style={{
+                                        width: "100%",
+                                        height: "70%",
+                                        backgroundColor: item.colorCode
+                                    }}>
 
-                                </TouchableOpacity>
+                                    </TouchableOpacity>
+                                    <Text style={{
+                                        fontSize: 12,
+                                        fontWeight: "500"
+                                    }}>{ item.name }</Text>
+                                </View>
 
                                 <Text style={{
                                     color: "#000000",
                                     fontSize: 14,
                                     fontWeight: "500",
-                                    marginRight: 10,
-                                    marginLeft: 10,
+                                    marginRight: 50,
+                                    marginLeft: 50,
                                 }}>{ item.base }</Text>
 
-                                <TouchableOpacity style={{
+                                <View style={{
                                     width: "50%",
-                                    height: 30,
-                                    backgroundColor: item.lighteningColor[0].colorCode
+                                    height: 40,
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    // backgroundColor: "blue"
                                 }}>
+                                    <TouchableOpacity style={{
+                                        width: "100%",
+                                        height: "70%",
+                                        backgroundColor: item.lighteningColor[0].colorCode
+                                    }}>
 
-                                </TouchableOpacity>
+                                    </TouchableOpacity>
+                                    <Text style={{
+                                        fontSize: 12,
+                                        fontWeight: "500"
+                                    }}>{ item.lighteningColor[0].name }</Text>
+                                </View>
+
                             </View>
                         ))
                     }

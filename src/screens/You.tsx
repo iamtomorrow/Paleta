@@ -1,9 +1,11 @@
 
 import { Text, TouchableOpacity, View } from "react-native"
 import { LibraryHeader } from "../components/Library.Header"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { UserContext } from "../../contexts/UserContext"
 import { useNavigation } from "@react-navigation/native"
+
+import Icon from "react-native-remix-icon"
 
 export const You = ( ) => {
     const navigation = useNavigation( );
@@ -22,14 +24,125 @@ export const You = ( ) => {
         }}>
             <LibraryHeader />
             
-            <Text style={{
-                color: "red"
-            }}>Olá, { UserContxt?.user?.name }</Text>
+            <View style={{
+                width: "100%",
+                height: 200,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-around",
+                // backgroundColor: "blue",
+            }}>
+                <View style={{
+                    width: 140,
+                    height: 140,
+                    borderRadius: 200,
+                    backgroundColor: "rgba(0, 0, 0, 0.05)"
+                }}>
 
-            <TouchableOpacity
-            onPress={ ( ) => updateContextAndNavigate("Preload") }>
-                <Text>Logout</Text>
-            </TouchableOpacity>
+                </View>
+                <Text style={{
+                    color: "#000000",
+                    fontSize: 20,
+                    fontWeight: "500"
+                }}>{ UserContxt?.user?.name }</Text>
+            </View>
+
+            <View style={{
+                width: "100%",
+                height: "auto",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginTop: 20
+                // backgroundColor: "red"
+            }}>
+                <TouchableOpacity
+                onPress={ ( ) => updateContextAndNavigate("Preload") }
+                style={{
+                    width: "90%",
+                    height: 50,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "red"
+                }}>
+                    <Icon 
+                        name="download-line"
+                        size={18}
+                    />
+                    <Text style={{
+                        marginLeft: 10,
+                        fontSize: 14,
+                        fontWeight: "500"
+                    }}>Modo offline e downloads</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={{
+                    width: "90%",
+                    height: 50,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "red"
+                }}>
+                    <Icon 
+                        name="earth-line"
+                        size={18}
+                    />
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: "500",
+                        marginLeft: 10,
+                    }}>Idioma</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={{
+                    width: "90%",
+                    height: 50,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "red"
+                }}>
+                    <Icon 
+                        name="shield-star-line"
+                        size={18}
+                    />
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: "500",
+                        marginLeft: 10,
+                    }}>Privacidade</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                onPress={ ( ) => updateContextAndNavigate("Preload") }
+                style={{
+                    width: "90%",
+                    height: 50,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "red"
+                }}>
+                    <Icon 
+                        name="logout-box-line"
+                        size={18}
+                    />
+                    <Text style={{
+                        fontSize: 14,
+                        fontWeight: "500",
+                        marginLeft: 10,
+                    }}>Sair</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

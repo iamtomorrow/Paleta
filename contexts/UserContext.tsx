@@ -21,8 +21,9 @@ export const UserContextProvider = ({ children }: ChildrenProps ) => {
         setUser( user );
     }
 
-    const updateuser = ( ) => {
-
+    const updateuser = async ( ) => {
+        let user = await Auth.getUser( );
+        setUser( user );
     }
 
     const removeUser = async ( ) => {
