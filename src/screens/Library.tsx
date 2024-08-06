@@ -5,14 +5,24 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons"
 
 import { LibraryCard } from "../components/Library.Card"
 import { LibraryHeader } from "../components/Library.Header"
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { ColorProps } from "../../Types/types"
 import { LibraryContext } from "../../contexts/LibraryContext"
+import { NavigationContext } from "../../contexts/NavigationContext"
+import { useFocusEffect } from "@react-navigation/native"
 
 export const Library = ( ) => {
     const LibraryContxt = useContext( LibraryContext );
+    const NavigationContxt = useContext( NavigationContext );
+
     const [ query, setQuery ] = useState<string>("");
     const [ filteredLibrary, setFilteredLibrary ] = useState<ColorProps[]>([]);
+
+    useFocusEffect(
+        useCallback(( ) => {
+            NavigationContxt.updateRoute("Library");
+        }, [ ])
+    )
 
     useEffect(( ) => {
         console.log("svs");
@@ -33,13 +43,13 @@ export const Library = ( ) => {
             height: "100%",
             backgroundColor: "#ffffff"
         }}>
-            {/* <Header /> */}
             <LibraryHeader />
 
             <ScrollView
             style={{
                 width: "100%",
                 height: "auto",
+                // zIndex: +30,
             }}>
                 <View style={{
                     width: "100%",
@@ -94,6 +104,7 @@ export const Library = ( ) => {
                                 id={ item.key }
                                 base={ item.base }
                                 name={ item.name }
+                                sample={ item.sample }
                                 icon={ item.icon }
                                 colorCode={ item.colorCode }
                             />

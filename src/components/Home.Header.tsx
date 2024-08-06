@@ -3,11 +3,17 @@ import { Ionicons } from "@expo/vector-icons"
 import { Image, Pressable, StatusBar, Text, TouchableOpacity, View } from "react-native"
 import { HeaderButton } from "./Header.Button"
 import { useNavigation } from "@react-navigation/native"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
+import Icon from "react-native-remix-icon"
+import { NavigationContext } from "../../contexts/NavigationContext"
 
 export const Header = ( ) => {
+    const NavigationContxt = useContext( NavigationContext );
     const navigation = useNavigation( );
 
     const updateContextAndNavigate = ( route: string ) => {
+        NavigationContxt.updateRoute(route);
         navigation.navigate({ name: route } as never );
     }
 
@@ -18,7 +24,7 @@ export const Header = ( ) => {
     return (
         <View style={{
             width: "100%",
-            height: 110,
+            height: 120,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -45,47 +51,63 @@ export const Header = ( ) => {
                     alignItems: "center",
                     // backgroundColor: "green"
                 }}>
-                    <TouchableOpacity style={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: 20,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        // backgroundColor: "red"
-                    }}>
-                        <Ionicons 
-                            name={"menu-sharp"} 
-                            size={ 24 }
-                            color={"#000000"}
-                        />
-                    </TouchableOpacity> 
                     <Image 
                         style={{
                             width: 100,
                             height: 30,
                         }}
                         source={require("../../assets/images/logo.png")}
-                    />
-                    <TouchableOpacity 
-                    onPress={ ( ) => updateContextAndNavigate("Search") }
-                    style={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: 20,
+                    /> 
+                    
+                    {/* <Text style={{
+                        color: "red"
+                    }}>{ NavigationContxt.currentRoute }</Text> */}
+
+                    <View style={{
+                        width: "auto",
+                        height: "100%",
                         display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        flexDirection: "row-reverse",
                         // backgroundColor: "red"
                     }}>
-                        <Ionicons 
-                            name={"search-sharp"} 
-                            size={ 24 }
-                            color={"#000000"}
-                        />
-                    </TouchableOpacity>
+                        <TouchableOpacity 
+                        onPress={ ( ) => updateContextAndNavigate("Search") }
+                        style={{
+                            width: 40,
+                            height: 40,
+                            borderRadius: 20,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+
+                            backgroundColor: "#000000"
+                        }}>
+                            <Icon 
+                                name={"notification-line"} 
+                                size={ 20 }
+                                color={"#ffffff"}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                        onPress={ ( ) => updateContextAndNavigate("Search") }
+                        style={{
+                            width: 40,
+                            height: 40,
+                            borderRadius: 20,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginRight: 6,
+                            // backgroundColor: "red"
+                        }}>
+                            <Ionicons 
+                                name={"search-sharp"} 
+                                size={ 20 }
+                                color={"#000000"}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            
             </View>
         </View>
     )

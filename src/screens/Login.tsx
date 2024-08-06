@@ -21,8 +21,8 @@ export const Login = ( ) => {
     const [ secureEntry, setSecureEntry ] = useState<boolean>(true);
 
     useEffect(( ) => {
-        NavigationContxt.updateRoute("Login");   
-    })
+        NavigationContxt.updateRoute("Login");
+    },[ ])
 
     const authByLogin = ( ) => {
         if ( name !== "" && password !== "" ) {
@@ -67,6 +67,62 @@ export const Login = ( ) => {
 
             <View style={{
                 width: "100%",
+                height: 100,
+                // backgroundColor: "red",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+            }}>
+                <TouchableOpacity 
+                onPress={ ( ) => { 
+                    setByLogin(true);
+                    setByEnter(false);
+                    setLoginBar(false);
+                }}
+                style={{
+                    width: Dimensions.get("window").width / 2.2,
+                    height: 46,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderBottomWidth: 2,
+                    borderBottomColor: byLogin ?  "#000000" : "rgba(0, 0, 0, 0)",
+                }}>
+                    <Text style={{
+                        color: "#000000",
+                        fontWeight: "500",
+                        fontSize: 12,
+                        textTransform: "uppercase"
+                    }}>Login</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                onPress={ ( ) => { 
+                    setByLogin(false);
+                    setByEnter(true);
+                    setLoginBar(false);
+                }}
+                style={{
+                    width: Dimensions.get("window").width / 2.2,
+                    height: 46,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderBottomWidth: 2,
+                    borderBottomColor: byEnter ?  "#000000" : "rgba(0, 0, 0, 0)",
+                }}>
+                    <Text style={{
+                        color: "#000000",
+                        fontWeight: "500",
+                        fontSize: 12,
+                        textTransform: "uppercase"
+                    }}>Apenas entrar</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={{
+                width: "100%",
                 height: "auto",
                 padding: 14,
                 // backgroundColor: "blue"
@@ -81,13 +137,6 @@ export const Login = ( ) => {
                         flexDirection: "column",
                         alignItems: "center"
                     }}>
-                        <Text style={{
-                            fontWeight: "500",
-                            fontSize: 12,
-                            textTransform: "uppercase",
-                            marginBottom: 20,
-                        }}>Faça login no aplicativo</Text>
-
                         <View style={{
                             width: "100%",
                             height: 60,
@@ -169,7 +218,10 @@ export const Login = ( ) => {
                             // backgroundColor: "red"
                         }}>
                             <TouchableOpacity 
-                            onPress={ ( ) => setLoginBar(true) }
+                            onPress={ ( ) => {
+                                setByEnter(false);
+                                setByLogin(false);
+                            }}
                             style={{
                                 width: 50,
                                 height: 50,
@@ -224,13 +276,6 @@ export const Login = ( ) => {
                         flexDirection: "column",
                         alignItems: "center"
                     }}>
-                        <Text style={{
-                            fontWeight: "500",
-                            fontSize: 12,
-                            textTransform: "uppercase",
-                            marginBottom: 20,
-                        }}>Apenas entre</Text>
-
                         <View style={{
                             width: "100%",
                             height: 60,
@@ -264,7 +309,10 @@ export const Login = ( ) => {
                             // backgroundColor: "red"
                         }}>
                             <TouchableOpacity 
-                                onPress={ ( ) => setLoginBar(true) }
+                                onPress={ ( ) => {
+                                    setByEnter(false);
+                                    setByLogin(false);
+                                }}
                                 style={{
                                 width: 50,
                                 height: 50,
@@ -311,71 +359,6 @@ export const Login = ( ) => {
                     </View>
                 }
             </View>
-
-            {
-                loginBar &&
-                <View style={{
-                    width: "100%",
-                    height: 100,
-                    // backgroundColor: "red",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-around",
-                }}>
-                    <TouchableOpacity 
-                    onPress={ ( ) => { 
-                        setByLogin(true);
-                        setByEnter(false);
-                        setLoginBar(false);
-                    }}
-                    style={{
-                        width: Dimensions.get("window").width / 2.2,
-                        backgroundColor: "#000000",
-                        height: 46,
-                        borderRadius: 10,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-    
-                        elevation: 16,
-                        shadowColor: "rgba(0, 0, 0, 0.2)",
-                        shadowOffset: { width: 10, height: 60 },
-                    }}>
-                        <Text style={{
-                            color: "#ffffff",
-                            fontWeight: "500",
-                            fontSize: 12,
-                        }}>Login</Text>
-                    </TouchableOpacity>
-    
-                    <TouchableOpacity 
-                    onPress={ ( ) => { 
-                        setByLogin(false);
-                        setByEnter(true);
-                        setLoginBar(false);
-                    }}
-                    style={{
-                        width: Dimensions.get("window").width / 2.2,
-                        backgroundColor: "#ffffff",
-                        height: 46,
-                        borderRadius: 10,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-    
-                        elevation: 16,
-                        shadowColor: "rgba(0, 0, 0, 0.2)",
-                        shadowOffset: { width: 10, height: 60 },
-                    }}>
-                        <Text style={{
-                            color: "#000000",
-                            fontWeight: "500",
-                            fontSize: 12,
-                        }}>Apenas entrar</Text>
-                    </TouchableOpacity>
-                </View>
-            }
         </View>
     )
 }

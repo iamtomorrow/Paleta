@@ -47,11 +47,13 @@ export const AppNavigator = ( ) => {
                     tabBarHideOnKeyboard: true,
                     tabBarStyle: {
                         height: NavigationContxt.currentRoute === "Login" ||
-                                NavigationContxt.currentRoute === "Preload" 
+                                NavigationContxt.currentRoute === "Preload" ||
+                                NavigationContxt.currentRoute === "Color"
                                 ? 0
                                 : 60,
                         display: NavigationContxt.currentRoute === "Login" ||
-                                NavigationContxt.currentRoute === "Preload" 
+                                NavigationContxt.currentRoute === "Preload" ||
+                                NavigationContxt.currentRoute === "Color" 
                                 ? "none"
                                 : "flex",
                         flexDirection: "row",
@@ -80,11 +82,12 @@ export const AppNavigator = ( ) => {
                     name="Home" component={ HomeStack } 
                     options={{
                         tabBarLabelStyle: {
+                            // display: "none",
                             fontSize: 10,
                             color: "#000000",
                             fontWeight: "600",
                             marginBottom: 10,
-                        }
+                        },
                     }}/>
                 <Tabs.Screen 
                     name="Preload" component={ Preload }
@@ -106,6 +109,7 @@ export const AppNavigator = ( ) => {
                     name="Search" component={ Search } 
                     options={{
                         tabBarLabelStyle: {
+                            // display: "none",
                             fontSize: 10,
                             color: "#000000",
                             fontWeight: "600",
@@ -116,6 +120,7 @@ export const AppNavigator = ( ) => {
                     name="Favorites" component={ Favorites } 
                     options={{
                         tabBarLabelStyle: {
+                            // display: "none",
                             fontSize: 10,
                             color: "#000000",
                             fontWeight: "600",
@@ -126,6 +131,7 @@ export const AppNavigator = ( ) => {
                     name="You" component={ You } 
                     options={{
                         tabBarLabelStyle: {
+                            // display: "none",
                             fontSize: 10,
                             color: "#000000",
                             fontWeight: "600",

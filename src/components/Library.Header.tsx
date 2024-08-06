@@ -4,38 +4,50 @@ import { Image, Pressable, StatusBar, Text, TouchableOpacity, View } from "react
 import { HeaderButton } from "./Header.Button"
 import { useNavigation } from "@react-navigation/native"
 import Icon from "react-native-remix-icon"
+import { useContext } from "react"
+import { NavigationContext } from "../../contexts/NavigationContext"
 
 export const LibraryHeader = ( ) => {
     const navigation = useNavigation( );
+    const NavigationContxt = useContext( NavigationContext );
 
     const updateContextAndNavigate = ( route: string ) => {
+        NavigationContxt.updateRoute(route);
         navigation.navigate({ name: route } as never );
+    }
+
+    const goBack = ( ) => {
+        console.log( "History: ", NavigationContxt.routeHistory );
+        NavigationContxt.updateRoute( NavigationContxt.routeHistory[0] );
+        navigation.goBack( );
     }
 
     return (
         <View style={{
             width: "100%",
-            height: 110,
+            height: 120,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // zIndex: -3,
             // backgroundColor: "red"
             backgroundColor: "rgba(0, 0, 0, 0)"
         }}>
             <View style={{
                 width: "100%",
+                height: "100%",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                paddingLeft: 12,
-                paddingRight: 12,
+                paddingLeft: 16,
+                paddingRight: 16,
                 justifyContent: "space-between",
-                // backgroundColor: "yellow",
+                //backgroundColor: "yellow",
                 marginTop: StatusBar.currentHeight,
             }}>
                 <View style={{
                     width: "100%",
-                    
+                    height: "100%",
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -43,29 +55,38 @@ export const LibraryHeader = ( ) => {
                     // backgroundColor: "green"
                 }}>
                     <TouchableOpacity 
-                    onPress={ ( ) => navigation.goBack( ) }
+                    onPress={ goBack }
                     style={{
-                        width: 40,
+                        width: "auto",
                         height: 40,
                         borderRadius: 20,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        borderWidth: 1,
+                        flexDirection: "row",
+                        paddingLeft: 12,
+                        paddingRight: 16,
+                        borderColor: "rgba(0, 0, 0, 0.2)"
                         // backgroundColor: "red"
                     }}>
                         <Icon 
                             name="arrow-left-line"
                             color="#000000"
-                            size={24}
+                            size={20}
                         />
+                        <Text style={{
+                            marginLeft: 4,
+                            color: "#000000",
+                            fontSize: 12,
+                            fontWeight: "500"
+                        }}>Voltar</Text>
                     </TouchableOpacity> 
-                    <Image 
-                        style={{
-                            width: 100,
-                            height: 30,
-                        }}
-                        source={require("../../assets/images/logo.png")}
-                    />
+
+                    {/* <Text style={{
+                        color: "red"
+                    }}>{ NavigationContxt.currentRoute }</Text> */}
+
                     <TouchableOpacity 
                     onPress={ ( ) => updateContextAndNavigate("Favorites") }
                     style={{
@@ -75,12 +96,14 @@ export const LibraryHeader = ( ) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        // backgroundColor: "red"
+                        borderWidth: 1,
+                        borderColor: "rgba(0, 0, 0, 0.2)",
+                        backgroundColor: "#000"
                     }}>
                         <Icon 
                             name="heart-line"
-                            color="#000000"
-                            size={24}
+                            color="#ffffff"
+                            size={20}
                         />
                     </TouchableOpacity>
                 </View>

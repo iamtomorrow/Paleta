@@ -1,15 +1,24 @@
 
 import { Text, TouchableOpacity, View } from "react-native"
 import { LibraryHeader } from "../components/Library.Header"
-import { useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect } from "react"
 import { UserContext } from "../../contexts/UserContext"
-import { useNavigation } from "@react-navigation/native"
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
 
 import Icon from "react-native-remix-icon"
+import { NavigationContext } from "../../contexts/NavigationContext"
 
 export const You = ( ) => {
     const navigation = useNavigation( );
     const UserContxt = useContext( UserContext );
+    const NavigationContxt = useContext( NavigationContext );
+
+    useFocusEffect(
+        
+        useCallback(( ) => {
+            NavigationContxt.updateRoute("You");
+        }, [ ])
+    )
 
     const updateContextAndNavigate = ( route: string ) => {
         UserContxt?.removeUser( );

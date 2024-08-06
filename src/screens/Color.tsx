@@ -1,13 +1,12 @@
-import { ScrollView, View, Image, Text, Dimensions, TouchableOpacity, StatusBar } from "react-native"
+import { View, Image, Text } from "react-native"
 import { Header } from "../components/Home.Header"
-import { useContext, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { ColorContext } from "../../contexts/ColorContext"
-import { MaterialIcons } from "@expo/vector-icons"
 import { LibraryHeader } from "../components/Library.Header"
 import Icon from "react-native-remix-icon"
-import { TextInput } from "react-native-gesture-handler"
 import { FavoritesContext } from "../../contexts/FavoritesContext"
-import { ColorProps } from "../../Types/types"
+import { NavigationContext } from "../../contexts/NavigationContext"
+import { useFocusEffect } from "@react-navigation/native"
 
 export const Color = ( ) => {
     const [ expandBar, setExpandBar ] = useState<boolean>(false);
@@ -15,67 +14,128 @@ export const Color = ( ) => {
 
     const ColorContxt = useContext( ColorContext );
     const FavoritesContxt = useContext( FavoritesContext );
+    const NavigationContxt = useContext( NavigationContext );
+
+    useFocusEffect(
+        useCallback(( ) => {
+            NavigationContxt.updateRoute("Color");
+        }, [ ])
+    )
 
     return (
         <View style={{
             width: "100%",
             height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
             backgroundColor: "#ffffff"
         }}>
-            {
-                expandBar &&
+            <LibraryHeader />
+            
+            <View style={{
+                width: "100%",
+                height: "100%",
+                zIndex: -1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+                position: "absolute",
+            }}>
+
+                <Image 
+                    source={{ uri: ColorContxt.color?.examples[0] }}
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        width: "100%",
+                        height: "100%",
+                        // zIndex: 3,
+                    }}
+                />
+            </View>
+
+            <View 
+            style={{
+                width: "100%",
+                height: "30%",
+                borderTopEndRadius: 40,
+                borderTopStartRadius: 40,
+                borderBottomStartRadius: 0,
+                borderBottomEndRadius: 0,
+                // marginBottom: 20,
+                backgroundColor: "rgba(0, 0, 0, 1)",
+                padding: 20,
+            }}>
                 <View style={{
                     width: "100%",
-                    height: "100%",
-                    position: "absolute",
-                    zIndex: 3,
+                    height: "20%",
                     display: "flex",
+                    flexDirection: "row",
                     alignItems: "center",
-                    justifyContent: "flex-start",
+                    justifyContent: "center"
                 }}>
-                    <View style={{
-                        width: "100%",
-                        height: "auto",
-                        marginTop: StatusBar.currentHeight,
-                        padding: 14,
-                        zIndex: 2,
-                    }}>
-                        <TouchableOpacity 
-                        onPress={ ( ) => setExpandBar(false) }
-                        style={{
-                            width: 60,
-                            height: 60,
-                            borderRadius: 20,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            backgroundColor: "black"
-                        }}>
-                            <MaterialIcons 
-                                name="close"
-                                size={30}
-                                color={"#ffffff"}
-                            />
-                        </TouchableOpacity>
-                    </View>
-
-                    <Image 
-                        source={{ uri: ColorContxt.color?.sample }}
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            width: "100%",
-                            height: "100%",
-                            // zIndex: 3,
-                        }}
-                    />
+                    <Text style={{
+                        color: "#ffffff",
+                        fontSize: 26,
+                        fontWeight: "500"
+                    }}>{ ColorContxt.color?.base } </Text>
+                    <Text style={{
+                        color: "#ffffff",
+                        fontSize: 26,
+                        textTransform: "uppercase",
+                    }}>{ ColorContxt.color?.name }</Text>
                 </View>
-            }
 
-            {/* <Header /> */}
-            <LibraryHeader />
+                <View style={{
+                    width: "100%",
+                    height: "20%",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "blue"
+                }}>
+                    <Text style={{
+                        color: "#ffffff",
+                        fontSize: 12,
+                        fontWeight: "light"
+                    }}>Fundo de clareamento </Text>
+                    <View style={{
+                        width: "50%",
+                        height: 14,
+                        backgroundColor: ColorContxt.color?.lighteningColor[0].colorCode
+                    }}>
 
-            <ScrollView
+                    </View>
+                </View>
+
+                
+                <View style={{
+                    width: "100%",
+                    height: "20%",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "blue"
+                }}>
+                    <Text style={{
+                        color: "#ffffff",
+                        fontSize: 12,
+                        fontWeight: "light"
+                    }}>Neutralizante: </Text>
+                    <View style={{
+                        width: "50%",
+                        height: 14,
+                        backgroundColor: ColorContxt.color?.lighteningColor[0].colorCode
+                    }}>
+
+                    </View>
+                </View>
+            </View>
+            {/* <ScrollView
             style={{
                 width: "100%",
                 height: "auto",
@@ -345,7 +405,7 @@ export const Color = ( ) => {
                     </TouchableOpacity>
                 </View>
 
-            </ScrollView>
+            </ScrollView> */}
         </View>
     )
 }

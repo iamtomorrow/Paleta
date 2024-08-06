@@ -1,12 +1,21 @@
 
 import { Text, View } from "react-native"
 import { LibraryHeader } from "../components/Library.Header"
-import { useContext } from "react"
+import { useCallback, useContext } from "react"
 import { FavoritesContext } from "../../contexts/FavoritesContext"
 import { LibraryCard } from "../components/Library.Card"
+import { NavigationContext } from "../../contexts/NavigationContext"
+import { useFocusEffect } from "@react-navigation/native"
 
 export const Favorites = ( ) => {
     const FavoritesContxt = useContext( FavoritesContext );
+    const NavigationContxt = useContext( NavigationContext );
+
+    useFocusEffect(
+        useCallback(( ) => {
+            NavigationContxt.updateRoute("Favorites");
+        }, [ ])
+    )
 
     return (
         <View style={{
@@ -19,14 +28,14 @@ export const Favorites = ( ) => {
             <View style={{
                 width: "100%",
                 height: 60,
+                paddingLeft: 16,
                 display: "flex",
                 justifyContent: "center",
-                paddingLeft: 20,
-            }}>
+                // backgroundColor: "red"
+            }}> 
                 <Text style={{
-                    fontWeight: "500",
-                    fontSize: 20,
-                }}>Seus favoritos</Text>
+                    fontSize: 24,
+                }}>Favoritos</Text>
             </View>
 
             <View style={{
@@ -44,6 +53,7 @@ export const Favorites = ( ) => {
                             id={ item.key }
                             base={ item.base }
                             name={ item.name }
+                            sample={ item.sample }
                             icon={ item.icon }
                             colorCode={ item.colorCode }
                         />

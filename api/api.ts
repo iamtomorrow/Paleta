@@ -60,7 +60,7 @@ export const API = {
                 name: "Castanho Médio Escuro",
                 description: "Um tom marrom mais equilibrado, visivelmente mais claro que o castanho escuro. Versátil e pode ser personalizado com subtons diferentes (vermelho, dourado, etc.).",
                 icon: "https://site.mutari.com.br/mechas/4.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/3-1-1.jpg",
                 colorCode: "#5D3A1A",
                 lighteningColor: [
                     {
@@ -82,7 +82,7 @@ export const API = {
                 name: "Castanho Médio",
                 description: "Um tom marrom mais equilibrado, visivelmente mais claro que o castanho escuro. Versátil e pode ser personalizado com subtons diferentes (vermelho, dourado, etc.).",
                 icon: "https://site.mutari.com.br/mechas/4.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/4-7.jpg",
                 colorCode: "#5D3A1A",
                 lighteningColor: [
                     {
@@ -104,7 +104,7 @@ export const API = {
                 name: "Castanho Claro",
                 description: "Notavelmente mais claro que o castanho médio. Reflete bem a luz, pode ser enriquecido com subtons como caramelo ou acobreado.",
                 icon: "https://site.mutari.com.br/mechas/5.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/5-6.jpg",
                 colorCode: "#6B4423",
                 lighteningColor: [
                     {
@@ -126,7 +126,7 @@ export const API = {
                 name: "Loiro Escuro",
                 description: "O tom mais escuro de loiro, mas ainda considerado loiro. Pode ter subtons variados como dourado, cinza ou vermelho.",
                 icon: "https://site.mutari.com.br/mechas/6.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/6-8.jpg",
                 colorCode: "#8B4513",
                 lighteningColor: [
                     {
@@ -148,7 +148,7 @@ export const API = {
                 name: "Loiro Médio",
                 description: "Um tom de loiro mais claro que o loiro escuro, bastante versátil. Subtons podem incluir dourado, acinzentado ou bege.",
                 icon: "https://site.mutari.com.br/mechas/7.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/7-8.jpg",
                 colorCode: "#A0522D",
                 lighteningColor: [
                     {
@@ -170,7 +170,7 @@ export const API = {
                 name: "Loiro Claro",
                 description: "Significativamente mais claro que o loiro médio. Reflete muita luz e é comumente enriquecido com subtons como pérola ou dourado.",
                 icon: "https://site.mutari.com.br/mechas/8.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/8-10.jpg",
                 colorCode: "#D2B48C",
                 lighteningColor: [
                     {
@@ -192,7 +192,7 @@ export const API = {
                 name: "Loiro Muito Claro",
                 description: "Um tom muito claro de loiro, quase platinado, mas com um pouco mais de calor. Ideal para criar um visual brilhante e radiante.",
                 icon: "https://site.mutari.com.br/mechas/9.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/9-6.jpg",
                 colorCode: "#EEDC82",
                 lighteningColor: [
                     {
@@ -214,7 +214,7 @@ export const API = {
                 name: "Loiro Claríssimo",
                 description: "A cor de cabelo mais clara, quase branca. Reflete o máximo de luz e é frequentemente usada para criar um visual platinado ou de gelo.",
                 icon: "https://site.mutari.com.br/mechas/10.0.png",
-                sample: "",
+                sample: "https://theshade.com.au/wp-content/uploads/2018/05/10-7.jpg",
                 colorCode: "#FAF0E6",
                 lighteningColor: [
                     {

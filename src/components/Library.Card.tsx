@@ -8,11 +8,12 @@ interface LibraryCardProps {
     id: string
     base: string
     name: string
+    sample: string
     icon: string
     colorCode: string
 }
 
-export const LibraryCard = ({ id, base, name, icon, colorCode }: LibraryCardProps ) => {
+export const LibraryCard = ({ id, base, name, sample, icon, colorCode }: LibraryCardProps ) => {
     const navigation = useNavigation( );
     const ColorContxt = useContext( ColorContext );
 
@@ -33,32 +34,46 @@ export const LibraryCard = ({ id, base, name, icon, colorCode }: LibraryCardProp
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "space-around",
-            padding: 18,
-            borderRadius: 10,
+            borderRadius: 20,
             marginLeft: 10,
-            marginTop: 10,
+            marginBottom: 30,
 
-            elevation: 16,
-            shadowColor: "rgba(0, 0, 0, 0.2)",
-            shadowOffset: { width: 10, height: 60 },
+            elevation: 32,
+            shadowColor: "rgba(0, 0, 0, 0.3)",
+            shadowOffset: { width: 10, height: 120 },
         }}>
             <Image 
-                width={90}
-                height={120}
-                source={{ uri: icon }} 
+                source={{ uri: sample }} 
+                style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: 20,
+                }}
             />
-            <Text style={{
-                fontSize: 14,
-                fontWeight: "500",
-                textAlign: "center"
-            }}>{ base } { name }</Text>
             <View style={{
-                width: 16,
-                height: 16,
-                borderRadius: 10,
-                backgroundColor: colorCode
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                position: "absolute",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                paddingBottom: 20,
             }}>
+                <Text style={{
+                    fontSize: 14,
+                    fontWeight: "500",
+                    textAlign: "center",
+                    color: "#ffffff"
+                }}>{ base } { name }</Text>
+                {/* <View style={{
+                    width: 16,
+                    height: 16,
+                    borderRadius: 10,
+                    backgroundColor: colorCode
+                }}>
 
+                </View> */}
             </View>
         </TouchableOpacity>
     )
