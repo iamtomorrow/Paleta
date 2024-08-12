@@ -2,15 +2,16 @@
 import Icon from "react-native-remix-icon"
 import { MaterialIcons } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
-import { Dimensions, Text, TouchableOpacity } from "react-native"
+import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native"
 
 interface HomeCardProps {
     icon: string,
+    title: string
     name: string
     description: string
 }
 
-export const HomeCard = ({ icon, name, description }: HomeCardProps ) => {
+export const HomeCard = ({ icon, title, name, description }: HomeCardProps ) => {
     const navigation = useNavigation( );
 
     const updateContextAndNavigate = ( route: string ) => {
@@ -19,47 +20,44 @@ export const HomeCard = ({ icon, name, description }: HomeCardProps ) => {
 
     return (
         <TouchableOpacity 
-        onPress={ () => updateContextAndNavigate(
-            name === "Biblioteca" ? "Library" : "Table"
-        ) }
+        onPress={ () => updateContextAndNavigate(title) }
         style={{
-            width: Dimensions.get("window").width / 2.2,
+            width: Dimensions.get("window").width / 3.6,
+            height: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             marginLeft: 10,
-            paddingTop: 16,
-            paddingBottom: 16,
-            paddingLeft: 20,
-            paddingRight: 20,
             borderRadius: 10,
-            backgroundColor: "#ffffff",
+            // backgroundColor: "blue",
             marginTop: 10,
-
-            elevation: 16,
-            shadowColor: "rgba(0, 0, 0, 0.2)",
-            shadowOffset: { width: 10, height: 60 },
+            paddingTop: 10,
+            paddingBottom: 10,
         }}>
-            <Icon 
-                name={ icon }
-                color={"rgba(0, 0, 0, 1)"}
-                size={36}
-            />
-            <Text style={{
-                color: "#000000",
-                fontSize: 18,
-                fontWeight: "500"
-            }}>{ name }</Text>
-            {/* <Text style={{
-                color: "#000000",
-                fontSize: 10,
-                fontWeight: "light",
-                width: "100%",
-                // backgroundColor: "red"
-            }}>{  }</Text> */}
+            <View style={{
+                width: Dimensions.get("window").width / 4.2,
+                height: Dimensions.get("window").width / 4.2,
+                borderWidth: 0,
+                borderColor: "rgba(0, 0, 0, 0.4)",
+                borderRadius: 200,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "rgba(0, 0, 0, 0.025)"
+            }}>
+                <Icon 
+                    name={ icon }
+                    color="rgba(0, 0, 0, 1)"
+                />
+            </View>
 
-            <MaterialIcons
-                name="arrow-forward"
-                color={"#000000"}
-                size={22}
-            />
+            <Text style={{
+                marginTop: 10,
+                color: "#000000",
+                fontSize: 14,
+                fontWeight: "400"
+            }}>{ name }</Text>
         </TouchableOpacity>
     )
 }

@@ -24,7 +24,6 @@ export const Preload = ( ) => {
                     navigation.reset({ index: 1, routes: [{ name: "Login" }] } as never);
                 }
             } else {
-                console.log("WRONG");
                 NavigationContxt.updateRoute("Login");
                 navigation.reset({ index: 1, routes: [{ name: "Login"}] } as never);
             }

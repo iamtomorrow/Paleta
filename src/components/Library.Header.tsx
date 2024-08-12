@@ -17,7 +17,7 @@ export const LibraryHeader = ( ) => {
     }
 
     const goBack = ( ) => {
-        console.log( "History: ", NavigationContxt.routeHistory );
+        // console.log( "History: ", NavigationContxt.routeHistory );
         NavigationContxt.updateRoute( NavigationContxt.routeHistory[0] );
         navigation.goBack( );
     }

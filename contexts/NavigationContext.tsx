@@ -19,7 +19,7 @@ export const NavigationContextProvider = ({ children }: ChildrenProps) => {
         let updatedHistory = routeHistory;
         updatedHistory.unshift(route);
         setRouteHistory( updatedHistory );
-        console.log( routeHistory );
+        // console.log( routeHistory );
     }
 
     return (

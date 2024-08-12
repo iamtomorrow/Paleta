@@ -23,8 +23,6 @@ export const ColorContextProvider = ({ children }: ChildrenProps ) => {
             return item.key === id
         })[0];
         setColor( updatedColor );
-
-        console.log( color );
     }
 
     return (

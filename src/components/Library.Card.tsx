@@ -66,14 +66,6 @@ export const LibraryCard = ({ id, base, name, sample, icon, colorCode }: Library
                     textAlign: "center",
                     color: "#ffffff"
                 }}>{ base } { name }</Text>
-                {/* <View style={{
-                    width: 16,
-                    height: 16,
-                    borderRadius: 10,
-                    backgroundColor: colorCode
-                }}>
-
-                </View> */}
             </View>
         </TouchableOpacity>
     )

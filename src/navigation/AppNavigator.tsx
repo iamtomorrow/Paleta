@@ -7,14 +7,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Search } from "../screens/Search";
 import { Favorites } from "../screens/Favorites";
 import { You } from "../screens/You";
-import { Ionicons } from "@expo/vector-icons";
 import Icon from "react-native-remix-icon"
+
 import { Library } from "../screens/Library";
 import { Color } from "../screens/Color";
 import { Table } from "../screens/Table";
 import { Preload } from "../screens/Preload";
 import { Login } from "../screens/Login";
+import { Quiz } from "../screens/Quiz";
+
 import { NavigationContext } from "../../contexts/NavigationContext";
+import { Circle } from "../screens/Circle";
 
 const Stack = createNativeStackNavigator( );
 const Tabs = createBottomTabNavigator( );
@@ -32,6 +35,8 @@ export const HomeStack = ( ) => {
             <Stack.Screen name="Search" component={ Search }/>
             <Stack.Screen name="Favorites" component={ Favorites } />
             <Stack.Screen name="You" component={ You } />
+            <Stack.Screen name="Quiz" component={ Quiz } />
+            <Stack.Screen name="Circle" component={ Circle } />
         </Stack.Navigator>
     )
 }
@@ -154,6 +159,20 @@ export const AppNavigator = ( ) => {
                     }}/>
                 <Tabs.Screen 
                     name="Table" component={ Table } 
+                    options={{
+                        tabBarItemStyle: {
+                            display: "none"
+                        },
+                    }}/>
+                <Tabs.Screen 
+                    name="Quiz" component={ Quiz } 
+                    options={{
+                        tabBarItemStyle: {
+                            display: "none"
+                        },
+                    }}/>
+                <Tabs.Screen 
+                    name="Circle" component={ Circle } 
                     options={{
                         tabBarItemStyle: {
                             display: "none"
