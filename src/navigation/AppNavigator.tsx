@@ -18,6 +18,7 @@ import { Quiz } from "../screens/Quiz";
 
 import { NavigationContext } from "../../contexts/NavigationContext";
 import { Circle } from "../screens/Circle";
+import { Galery } from "../screens/Galery";
 
 const Stack = createNativeStackNavigator( );
 const Tabs = createBottomTabNavigator( );
@@ -37,6 +38,7 @@ export const HomeStack = ( ) => {
             <Stack.Screen name="You" component={ You } />
             <Stack.Screen name="Quiz" component={ Quiz } />
             <Stack.Screen name="Circle" component={ Circle } />
+            <Stack.Screen name="Galery" component={ Galery }/>
         </Stack.Navigator>
     )
 }
@@ -173,6 +175,13 @@ export const AppNavigator = ( ) => {
                     }}/>
                 <Tabs.Screen 
                     name="Circle" component={ Circle } 
+                    options={{
+                        tabBarItemStyle: {
+                            display: "none"
+                        },
+                    }}/>
+                <Tabs.Screen 
+                    name="Galery" component={ Galery } 
                     options={{
                         tabBarItemStyle: {
                             display: "none"

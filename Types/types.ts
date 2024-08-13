@@ -1,5 +1,17 @@
 import { ReactNode } from "react";
 
+export interface QuizAnswersProps {
+    question: string
+    answer: string
+}
+
+export interface GaleryPhotoProps {
+    id: string
+    title: string
+    url: string,
+    tags: string[]
+}
+
 export interface ChildrenProps {
     children: ReactNode
 }

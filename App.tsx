@@ -7,6 +7,8 @@ import { UserContext, UserContextProvider } from './contexts/UserContext';
 import { useContext, useEffect } from 'react';
 import { LibraryContextProvider } from './contexts/LibraryContext';
 import { FavoritesContextProvider } from './contexts/FavoritesContext';
+import { GaleryContextProvider } from './contexts/GaleryContext';
+import { QuizContextProvider } from './contexts/QuizContext';
 
 export default function App() {
   const UserContxt = useContext( UserContext );
@@ -17,6 +19,8 @@ export default function App() {
 
   return (
     <GestureHandlerRootView>
+      <QuizContextProvider>
+      <GaleryContextProvider>
       <FavoritesContextProvider>
         <LibraryContextProvider>
           <UserContextProvider>
@@ -28,6 +32,8 @@ export default function App() {
           </UserContextProvider>
         </LibraryContextProvider>
       </FavoritesContextProvider>
+      </GaleryContextProvider>
+      </QuizContextProvider>
     </GestureHandlerRootView>
   );
 }

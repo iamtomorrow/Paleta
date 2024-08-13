@@ -35,11 +35,11 @@ export const You = ( ) => {
             
             <View style={{
                 width: "100%",
-                height: 200,
+                height: 300,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "flex-start",
                 // backgroundColor: "blue",
             }}>
                 <View style={{
@@ -51,10 +51,19 @@ export const You = ( ) => {
 
                 </View>
                 <Text style={{
+                    marginTop: 16,
                     color: "#000000",
                     fontSize: 20,
                     fontWeight: "500"
                 }}>{ UserContxt?.user?.name }</Text>
+            </View>
+
+            <View style={{
+                width: "100%",
+                height: 100,
+                display: "flex",
+            }}>
+                
             </View>
 
             <View style={{

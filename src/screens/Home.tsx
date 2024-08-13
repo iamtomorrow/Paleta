@@ -8,9 +8,11 @@ import Icon from "react-native-remix-icon"
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import { NavigationContext } from "../../contexts/NavigationContext"
 import { LinearGradient } from "expo-linear-gradient"
+import { useTheme } from "../../hooks/useTheme"
 
 export const Home = ( ) => {
-    
+    const theme = useTheme({ theme: "default" });
+
     const NavigationContxt = useContext( NavigationContext );
     const navigation = useNavigation( );
 
@@ -30,7 +32,7 @@ export const Home = ( ) => {
             height: "100%",
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "#ffffff"
+            backgroundColor: theme?.primary.surface
         }}>
             <Header />
 
@@ -79,13 +81,13 @@ export const Home = ( ) => {
                         // backgroundColor: "red"
                     }}>
                         <Text style={{
-                            color: "#ffffff",
+                            color: theme?.primary.text,
                             fontSize: 26,
                             fontWeight: "500"
                         }}>Descubra seu tom</Text>
                         <Text style={{
                             marginTop: 4,
-                            color: "rgba(256, 256, 256, 0.9)",
+                            color: theme?.secondary.text,
                             width: "70%",
                             fontSize: 12,
                         }}>Com nossa tecnologia de segmentação você descobre sua cor de cabelo e mais.</Text>
@@ -103,17 +105,17 @@ export const Home = ( ) => {
                             alignItems: "center",
                             justifyContent: "center",
                             borderRadius: 100,
-                            borderColor: "rgba(256, 256, 256, 0.9)",
+                            borderColor: theme?.secondary.text,
                         }}>
                             <Text style={{
-                                color: "rgba(256, 256, 256, 0.9)",
+                                color: theme?.secondary.text,
                                 fontSize: 12,
                                 marginRight: 6,
                             }}>Saber mais</Text>
                             <Icon 
                                 name="arrow-right-line"
                                 size={20}
-                                color="#ffffff"
+                                color={ theme?.secondary.icon }
                             />
                         </Pressable>
                     </View>

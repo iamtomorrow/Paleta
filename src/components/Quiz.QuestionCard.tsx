@@ -1,6 +1,8 @@
 
-import { View, Text } from "react-native"
+import { useContext, useState } from "react"
+import { View, Text, Dimensions } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
+import { QuizContext } from "../../contexts/QuizContext"
 
 interface QuestionCardProps {
     _number: number
@@ -9,11 +11,21 @@ interface QuestionCardProps {
 }
 
 export const QuestionCard = ({ _number, title, options }: QuestionCardProps) => {
+    const QuizContxt = useContext( QuizContext );
+    const [ hidden, setHidden ] = useState<boolean>(false);
+
+    const toggleQuizCard = ( item: string ) => {
+        console.log( _number, item );
+        setHidden(true);
+
+        QuizContxt?.updateQuiz({ question: title, answer: item})
+    }
+
     return (
         <View style={{
             width: "90%",
             height: "auto",
-            display: "flex",
+            display: hidden ? "none" : "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
@@ -24,6 +36,7 @@ export const QuestionCard = ({ _number, title, options }: QuestionCardProps) => 
             borderRadius: 20,
             paddingTop: 20,
             paddingBottom: 20,
+            // position: "absolute",
         }}>
             <View style={{
                 marginTop: 20,
@@ -71,7 +84,9 @@ export const QuestionCard = ({ _number, title, options }: QuestionCardProps) => 
                 {
                     options &&
                     options.map((item) => (
-                        <TouchableOpacity style={{
+                        <TouchableOpacity 
+                        onPress={ () => toggleQuizCard(item) }
+                        style={{
                             paddingLeft: 16,
                             paddingRight: 16,
                             paddingTop: 10,

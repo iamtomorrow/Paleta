@@ -25,7 +25,6 @@ export const Library = ( ) => {
     )
 
     useEffect(( ) => {
-        console.log("svs");
         LibraryContxt.getLibrary( );
         setFilteredLibrary( LibraryContxt.library );
     }, [ ]);

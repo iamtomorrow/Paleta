@@ -1,6 +1,40 @@
-import { ColorProps } from "../Types/types";
+import { ColorProps, GaleryPhotoProps } from "../Types/types";
 
 export const API = {
+    getGalery: async ( ): Promise<GaleryPhotoProps[]> => {
+        const galery = [
+            {
+                id: "sdvsvd",
+                title: "",
+                url: "https://i.pinimg.com/564x/f1/10/d3/f110d36cea624257b1422848888797c5.jpg",
+                tags: [
+                    "preto",
+                    "pinterest"
+                ]
+            },
+            {
+                id: "sdvsvd",
+                title: "",
+                url: "https://i.pinimg.com/564x/bb/03/0f/bb030fdf0767b32388d5acafe1fcd05d.jpg",
+                tags: [
+                    "preto",
+                    "pinterest"
+                ]
+            },
+            {
+                id: "sdvsvd",
+                title: "",
+                url: "https://i.pinimg.com/564x/17/c8/1c/17c81c5ef308495e6565f585222de609.jpg",
+                tags: [
+                    "preto",
+                    "pinterest"
+                ]
+            }
+        ]
+
+        return galery;
+    },
+
     getLibrary: async ( ): Promise<ColorProps[]> => {
         let library = [
             {
@@ -72,6 +106,7 @@ export const API = {
                     }
                 ],  
                 examples: [
+                    "https://theshade.com.au/wp-content/uploads/2018/05/3-7-600x600.jpg",
                     ""
                 ]
             },
@@ -94,7 +129,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://theshade.com.au/wp-content/uploads/2018/05/5-7.jpg"
                 ]
             },
             {
@@ -116,7 +151,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://theshade.com.au/wp-content/uploads/2018/05/6-9-600x600.jpg"
                 ]
             },
             {
@@ -138,7 +173,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://theshade.com.au/wp-content/uploads/2018/05/sharpen_7-1-600x600.jpg"
                 ]
             },
             {
@@ -160,7 +195,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://theshade.com.au/wp-content/uploads/2018/05/8-600x600.png"
                 ]
             },
             {
@@ -182,7 +217,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://theshade.com.au/wp-content/uploads/2018/05/9-600x600.jpg"
                 ]
             },
             {
@@ -204,7 +239,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://i.pinimg.com/564x/1e/06/e0/1e06e06ffc6eb89b57ca74a0b8ede0b8.jpg"
                 ]
             },
             {
@@ -226,7 +261,7 @@ export const API = {
                     }
                 ],  
                 examples: [
-                    ""
+                    "https://theshade.com.au/wp-content/uploads/2018/05/10-2-1.jpg"
                 ]
             },
         ]

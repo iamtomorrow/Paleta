@@ -3,6 +3,7 @@ import Icon from "react-native-remix-icon"
 import { MaterialIcons } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native"
+import { useTheme } from "../../hooks/useTheme"
 
 interface HomeCardProps {
     icon: string,
@@ -12,6 +13,7 @@ interface HomeCardProps {
 }
 
 export const HomeCard = ({ icon, title, name, description }: HomeCardProps ) => {
+    const theme = useTheme({ theme: "default" });
     const navigation = useNavigation( );
 
     const updateContextAndNavigate = ( route: string ) => {
@@ -44,17 +46,17 @@ export const HomeCard = ({ icon, title, name, description }: HomeCardProps ) => 
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "rgba(0, 0, 0, 0.025)"
+                backgroundColor: theme?.secondary.surface
             }}>
                 <Icon 
                     name={ icon }
-                    color="rgba(0, 0, 0, 1)"
+                    color={ theme?.primary.icon }
                 />
             </View>
 
             <Text style={{
                 marginTop: 10,
-                color: "#000000",
+                color: theme?.primary.text,
                 fontSize: 14,
                 fontWeight: "400"
             }}>{ name }</Text>
