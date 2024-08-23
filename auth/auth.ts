@@ -36,5 +36,5 @@ export const Auth = {
         return user
         ? JSON.parse(user)
         : ""
-    }
+    },
 }

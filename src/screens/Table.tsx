@@ -15,7 +15,7 @@ export const Table = ( ) => {
             style={{
                 width: "100%",
                 height: "auto",
-                padding: 14
+                padding: 20
             }}>
                 <View style={{
                     width: "100%",
@@ -73,8 +73,7 @@ export const Table = ( ) => {
                                 display: "flex",
                                 flexDirection: "row",
                                 alignItems: "center",
-                                justifyContent: "space-around"
-                                // backgroundColor: "red"
+                                justifyContent: "space-around",
                             }}>
 
                                 <View style={{

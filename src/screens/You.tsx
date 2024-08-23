@@ -14,7 +14,6 @@ export const You = ( ) => {
     const NavigationContxt = useContext( NavigationContext );
 
     useFocusEffect(
-        
         useCallback(( ) => {
             NavigationContxt.updateRoute("You");
         }, [ ])
@@ -24,6 +23,10 @@ export const You = ( ) => {
         UserContxt?.removeUser( );
         navigation.navigate({ name: route } as never);
     }
+
+    useEffect(( ) => {
+        UserContxt?.getUser( );
+    }, [ ])
 
     return (
         <View style={{

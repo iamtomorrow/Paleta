@@ -16,6 +16,10 @@ export const Home = ( ) => {
     const NavigationContxt = useContext( NavigationContext );
     const navigation = useNavigation( );
 
+    const updateContextAndNavigate = ( route: string ) => {
+        navigation.navigate({ name: route } as never);
+    }
+
     useEffect(( ) => {
         NavigationContxt.updateRoute("Home");
     }, [ ])
@@ -90,9 +94,11 @@ export const Home = ( ) => {
                             color: theme?.secondary.text,
                             width: "70%",
                             fontSize: 12,
-                        }}>Com nossa tecnologia de segmentação você descobre sua cor de cabelo e mais.</Text>
+                        }}>Com nosso quiz você descobre sua cor de cabelo e mais.</Text>
 
-                        <Pressable style={{
+                        <Pressable 
+                        onPress={ ( ) => updateContextAndNavigate("Quiz") }
+                        style={{
                             maxWidth: "50%",
                             marginTop: 12,
                             paddingLeft: 12,

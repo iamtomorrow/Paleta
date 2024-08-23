@@ -32,6 +32,7 @@ export const HomeCard = ({ icon, title, name, description }: HomeCardProps ) => 
             justifyContent: "center",
             marginLeft: 10,
             borderRadius: 10,
+            padding: 10,
             // backgroundColor: "blue",
             marginTop: 10,
             paddingTop: 10,

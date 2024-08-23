@@ -16,17 +16,18 @@ export const Library = ( ) => {
     const NavigationContxt = useContext( NavigationContext );
 
     const [ query, setQuery ] = useState<string>("");
-    const [ filteredLibrary, setFilteredLibrary ] = useState<ColorProps[]>([]);
+    const [ filteredLibrary, setFilteredLibrary ] = useState<ColorProps[]>([ ]);
 
     useFocusEffect(
         useCallback(( ) => {
             NavigationContxt.updateRoute("Library");
+            // LibraryContxt.getLibrary( );
+            // setFilteredLibrary( LibraryContxt.library );
         }, [ ])
     )
 
     useEffect(( ) => {
         LibraryContxt.getLibrary( );
-        setFilteredLibrary( LibraryContxt.library );
     }, [ ]);
 
     useEffect(( ) => {
@@ -97,10 +98,11 @@ export const Library = ( ) => {
                     padding: 16,
                 }}>
                     {
-                        LibraryContxt.library &&
+                        filteredLibrary &&
                         filteredLibrary.map((item, index) => (
                             <LibraryCard 
-                                id={ item.key }
+                                id={ item.id }
+                                key={ item.key }
                                 base={ item.base }
                                 name={ item.name }
                                 sample={ item.sample }

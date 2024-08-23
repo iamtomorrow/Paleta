@@ -1,19 +1,17 @@
-import { View, Image, Text } from "react-native"
-import { Header } from "../components/Home.Header"
+import { View, Image, Text, Alert, TouchableOpacity } from "react-native"
 import { useCallback, useContext, useEffect, useState } from "react"
 import { ColorContext } from "../../contexts/ColorContext"
-import { LibraryHeader } from "../components/Library.Header"
-import Icon from "react-native-remix-icon"
-import { FavoritesContext } from "../../contexts/FavoritesContext"
 import { NavigationContext } from "../../contexts/NavigationContext"
 import { useFocusEffect } from "@react-navigation/native"
+import { ColorHeader } from "../components/Color.Header"
 
 export const Color = ( ) => {
     const [ expandBar, setExpandBar ] = useState<boolean>(false);
     const [ toggleIcon, setToggleIcon ] = useState<boolean>(false);
+    const [ expandFirstColorBar, setExpandFirstColorBar ] = useState<boolean>(false);
+    const [ expandColorBar, setExpandColorBar ] = useState<boolean>(false);
 
     const ColorContxt = useContext( ColorContext );
-    // const FavoritesContxt = useContext( FavoritesContext );
     const NavigationContxt = useContext( NavigationContext );
 
     useFocusEffect(
@@ -21,10 +19,6 @@ export const Color = ( ) => {
             NavigationContxt.updateRoute("Color");
         }, [ ])
     )
-
-    useEffect(( ) => {
-        console.log( ColorContxt.color ); 
-    }, [ ]);
 
     return (
         <View style={{
@@ -36,7 +30,7 @@ export const Color = ( ) => {
             justifyContent: "space-between",
             backgroundColor: "#ffffff"
         }}>
-            <LibraryHeader />
+            <ColorHeader />
             
             <View style={{
                 width: "100%",
@@ -63,9 +57,9 @@ export const Color = ( ) => {
             <View 
             style={{
                 width: "100%",
-                height: "30%",
-                borderTopEndRadius: 40,
-                borderTopStartRadius: 40,
+                height: "36%",
+                borderTopEndRadius: 0,
+                borderTopStartRadius: 0,
                 borderBottomStartRadius: 0,
                 borderBottomEndRadius: 0,
                 // marginBottom: 20,
@@ -77,52 +71,62 @@ export const Color = ( ) => {
                     height: "20%",
                     display: "flex",
                     flexDirection: "row",
-                    alignItems: "center",
+                    alignItems: "flex-start",
                     justifyContent: "center"
                 }}>
                     <Text style={{
                         color: "#ffffff",
                         fontSize: 26,
-                        fontWeight: "500"
+                        fontWeight: "500",
+                        textAlign: "center",
                     }}>{ ColorContxt.color?.base } </Text>
                     <Text style={{
                         color: "#ffffff",
                         fontSize: 26,
                         textTransform: "uppercase",
+                        textAlign: "center"
                     }}>{ ColorContxt.color?.name }</Text>
                 </View>
 
                 <View style={{
                     width: "100%",
-                    height: "20%",
+                    height: "40%",
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    justifyContent: "flex-start",
                     // backgroundColor: "blue"
                 }}>
                     <Text style={{
                         color: "#ffffff",
                         fontSize: 12,
                         fontWeight: "light"
-                    }}>Fundo de clareamento </Text>
-                    <View style={{
-                        width: "50%",
-                        height: 14,
+                    }}>Fundo de clareamento</Text>
+                    <TouchableOpacity 
+                    onPress={  ( ) => setExpandFirstColorBar(prev => !prev)}
+                    style={{
+                        width: expandFirstColorBar ? 120 : 40,
+                        height: 40,
+                        borderRadius: 20,
+                        marginRight: 4,
+                        marginLeft: 4,
                         backgroundColor: ColorContxt.color?.lighteningColor[0].colorCode
                     }}>
 
-                    </View>
+                    </TouchableOpacity>
+                    <Text style={{
+                        color: "#ffffff",
+                        fontSize: 12
+                    }}>{ ColorContxt.color?.lighteningColor[0].name }</Text>
                 </View>
 
-                
                 <View style={{
                     width: "100%",
-                    height: "20%",
+                    height: "40%",
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    justifyContent: "flex-start",
                     // backgroundColor: "blue"
                 }}>
                     <Text style={{
@@ -131,11 +135,42 @@ export const Color = ( ) => {
                         fontWeight: "light"
                     }}>Neutralizante: </Text>
                     <View style={{
-                        width: "50%",
-                        height: 14,
-                        backgroundColor: ColorContxt.color?.lighteningColor[0].colorCode
+                        width: "auto",
+                        height: "auto",
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-around"
                     }}>
+                        {
+                            ColorContxt.color?.neutrals && 
+                            ColorContxt.color.neutrals.map((item) => (
+                                <View style={{
+                                    width: "auto",
+                                    height: 62,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "space-around",
+                                    marginRight: 4,
+                                    marginLeft: 4,
+                                }}>
+                                    <TouchableOpacity 
+                                    onPress={ ( ) => setExpandColorBar(prev => !prev)}
+                                    style={{
+                                        width: expandColorBar ? 120 : 40,
+                                        height: 40,
+                                        borderRadius: 20,
+                                        backgroundColor: item.colorCode
+                                    }}>
 
+                                    </TouchableOpacity>
+                                    <Text style={{
+                                        color: "#ffffff",
+                                        fontSize: 12
+                                    }}>{ item.name }</Text>
+                                </View>
+                            ))
+                        }
                     </View>
                 </View>
             </View>

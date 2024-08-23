@@ -27,6 +27,7 @@ export interface ColorProps {
     colorCode: string,
     lighteningColor: lighteningColorProps[],
     examples: string[],
+    neutrals: lighteningColorProps[]
 }
 
 interface lighteningColorProps {

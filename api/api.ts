@@ -60,6 +60,15 @@ export const API = {
                     "https://theshade.com.au/wp-content/uploads/2018/05/sharpen_1-4.jpg",
                     "https://theshade.com.au/wp-content/uploads/2018/05/606-x-606-600x600.jpg",
                     "https://theshade.com.au/wp-content/uploads/2024/04/Bologna-1-Black-49-600x600.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Preto",
+                        description: "Some description",
+                        colorCode: "#000000"
+                    }
                 ]
             },
             {
@@ -85,11 +94,27 @@ export const API = {
                     "https://theshade.com.au/wp-content/uploads/2018/05/sharpen_2-2.jpg",
                     "https://theshade.com.au/wp-content/uploads/2022/10/3-600x600.png",
                     "https://theshade.com.au/wp-content/uploads/2018/05/ok-600x600.png"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Cinza",
+                        description: "Some description",
+                        colorCode: "#808080",
+                    },
+                    {
+                        id: 1,
+                        key: "vzrl6FtHEr",
+                        name: "Azul",
+                        description: "Some description",
+                        colorCode: "#0000ff",
+                    },
                 ]
             },
             {
                 id: 3,
-                key: "CNcOZsbOmW",
+                key: "CNcOZsbOmq",
                 base: "3.0",
                 name: "Castanho Médio Escuro",
                 description: "Um tom marrom mais equilibrado, visivelmente mais claro que o castanho escuro. Versátil e pode ser personalizado com subtons diferentes (vermelho, dourado, etc.).",
@@ -108,11 +133,27 @@ export const API = {
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/3-7-600x600.jpg",
                     ""
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Cinza",
+                        description: "Some description",
+                        colorCode: "#808080",
+                    },
+                    {
+                        id: 1,
+                        key: "vzrl6FtHEr",
+                        name: "Azul",
+                        description: "Some description",
+                        colorCode: "#0000ff",
+                    },
                 ]
             },
             {
                 id: 4,
-                key: "CNcOZsbOmW",
+                key: "CicOZsbOmW",
                 base: "4.0",
                 name: "Castanho Médio",
                 description: "Um tom marrom mais equilibrado, visivelmente mais claro que o castanho escuro. Versátil e pode ser personalizado com subtons diferentes (vermelho, dourado, etc.).",
@@ -130,6 +171,22 @@ export const API = {
                 ],  
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/5-7.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Azul Arroxeado",
+                        description: "Some description",
+                        colorCode: "#7436ff",
+                    },
+                    {
+                        id: 1,
+                        key: "vzrl6FtHEr",
+                        name: "Cinza frio",
+                        description: "Some description",
+                        colorCode: "#8a898e",
+                    },
                 ]
             },
             {
@@ -152,6 +209,22 @@ export const API = {
                 ],  
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/6-9-600x600.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Azul Arroxeado",
+                        description: "Some description",
+                        colorCode: "#7436ff",
+                    },
+                    {
+                        id: 1,
+                        key: "vzrl6FtHEr",
+                        name: "Cinza frio",
+                        description: "Some description",
+                        colorCode: "#8a898e",
+                    },
                 ]
             },
             {
@@ -174,6 +247,22 @@ export const API = {
                 ],  
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/sharpen_7-1-600x600.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Violeta",
+                        description: "Some description",
+                        colorCode: "#7e0eac",
+                    },
+                    {
+                        id: 1,
+                        key: "vzrl6FtHEr",
+                        name: "Azul violáceo",
+                        description: "Some description",
+                        colorCode: "#8483ff",
+                    },
                 ]
             },
             {
@@ -196,6 +285,22 @@ export const API = {
                 ],  
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/8-600x600.png"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Violeta",
+                        description: "Some description",
+                        colorCode: "#7e0eac",
+                    },
+                    {
+                        id: 1,
+                        key: "vzrl6FtHEr",
+                        name: "Azul violáceo",
+                        description: "Some description",
+                        colorCode: "#8483ff",
+                    },
                 ]
             },
             {
@@ -218,6 +323,15 @@ export const API = {
                 ],  
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/9-600x600.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Violeta Claro",
+                        description: "Some description",
+                        colorCode: "#d29bfd",
+                    }
                 ]
             },
             {
@@ -240,6 +354,15 @@ export const API = {
                 ],  
                 examples: [
                     "https://i.pinimg.com/564x/1e/06/e0/1e06e06ffc6eb89b57ca74a0b8ede0b8.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Violeta Claro",
+                        description: "Some description",
+                        colorCode: "#d29bfd",
+                    }
                 ]
             },
             {
@@ -262,6 +385,22 @@ export const API = {
                 ],  
                 examples: [
                     "https://theshade.com.au/wp-content/uploads/2018/05/10-2-1.jpg"
+                ],
+                neutrals: [
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Violeta Claro",
+                        description: "Some description",
+                        colorCode: "#d29bfd",
+                    },
+                    {
+                        id: 0,
+                        key: "vzrl6FtHEr",
+                        name: "Violeta Perolado",
+                        description: "Some description",
+                        colorCode: "#c1d1e8"
+                    }
                 ]
             },
         ]

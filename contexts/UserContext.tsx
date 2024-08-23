@@ -2,12 +2,14 @@
 import { createContext, useState } from "react";
 import { ChildrenProps, UserProps } from "../Types/types";
 import { Auth } from "../auth/auth";
+import { Storage } from "../api/storage";
 
 interface UserContextProps {
     user: UserProps | undefined
     addUser: ( name: string ) => void
     updateuser: ( ) => void
     removeUser: ( ) => void
+    getUser: ( ) => void
 }
 
 export const UserContext = createContext<UserContextProps | null>(null);
@@ -29,6 +31,13 @@ export const UserContextProvider = ({ children }: ChildrenProps ) => {
     const removeUser = async ( ) => {
         await Auth.removeToken( );
         await Auth.removeUser( );
+        await Storage.Vanish.cleanFavorites( );
+    }
+
+    const getUser = async ( ) => {
+        let usr = await Auth.getUser( );
+        console.log( usr ); 
+        setUser( usr );
     }
 
     return (
@@ -36,7 +45,8 @@ export const UserContextProvider = ({ children }: ChildrenProps ) => {
             user,
             addUser,
             updateuser,
-            removeUser
+            removeUser,
+            getUser
         }}>
             { children }
         </UserContext.Provider>

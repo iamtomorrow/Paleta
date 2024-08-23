@@ -5,7 +5,7 @@ import { ColorContext } from "../../contexts/ColorContext"
 import { useNavigation } from "@react-navigation/native"
 
 interface LibraryCardProps {
-    id: string
+    id: number
     base: string
     name: string
     sample: string
@@ -19,7 +19,6 @@ export const LibraryCard = ({ id, base, name, sample, icon, colorCode }: Library
 
     const updateContextAndNavigate = ( route: string ) => {
         ColorContxt.updateColor( id );
-
         navigation.navigate({ name: route } as never);
     }
 
@@ -38,9 +37,10 @@ export const LibraryCard = ({ id, base, name, sample, icon, colorCode }: Library
             marginLeft: 10,
             marginBottom: 30,
 
-            elevation: 32,
-            shadowColor: "rgba(0, 0, 0, 0.3)",
-            shadowOffset: { width: 10, height: 120 },
+            // elevation: 16,
+            // shadowColor: "rgba(0, 0, 0, 0.3)",
+            // shadowOffset: { width: 10, height: 60 },
+            // shadowRadius: 2
         }}>
             <Image 
                 source={{ uri: sample }} 
@@ -61,10 +61,10 @@ export const LibraryCard = ({ id, base, name, sample, icon, colorCode }: Library
                 paddingBottom: 20,
             }}>
                 <Text style={{
-                    fontSize: 14,
-                    fontWeight: "500",
+                    fontSize: 16,
+                    fontWeight: "600",
                     textAlign: "center",
-                    color: "#ffffff"
+                    color: "#ffffff",
                 }}>{ base } { name }</Text>
             </View>
         </TouchableOpacity>
